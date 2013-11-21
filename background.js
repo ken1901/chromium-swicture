@@ -7,6 +7,7 @@ var toggleOnMouseover = 1;
 var revealSpeed = 1000;
 var ignoreBackgroundImages = 1;
 var ignoreNewContent = 1;
+var waitForPageload = 1;
 
 var walk_the_DOM = function walk(node, func) {
     func(node);
@@ -95,7 +96,7 @@ function toggle()
 	applyToggle();
 }
 
-function onLoad()
+function startScript()
 {
 	init = 1;
 	var oKey = window.location.href;
@@ -110,6 +111,7 @@ console.log(options);
 
                         if(disablePlugin) return;
 
+                        waitForPageload = options["waitForPageload"] == 0 ? 0 : 1;
 			show = options["showImages"] == 0 ? 0 : 1;
 			ignoreBackgroundImages = options["ignoreBackgroundImages"] == 0 ? 0 : 1;
 			opacity = options["opacity"] != "undefined" ? options["opacity"] : opacity;
@@ -151,4 +153,9 @@ console.log(options);
 }
 
 //onLoad();
-document.body.onload = onLoad;
+if(waitForPageload) {
+    document.body.onload = startScript;
+}
+else {
+   startScript(); 
+}

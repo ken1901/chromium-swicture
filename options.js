@@ -4,6 +4,7 @@ var init = 0;
 var DEFAULT_DISABLEPLUGIN = 0;
 var DEFAULT_SHOWIMAGES = 1;
 var DEFAULT_IGNOREBACKGROUNDIMAGES = 1;
+var DEFAULT_WAITFORPAGELOAD = 1;
 var DEFAULT_OPACITY = 0.1;
 var DEFAULT_TOGGLEONMOUSEOVER = 1;
 var DEFAULT_REVEALSPEED = 1000;
@@ -13,6 +14,7 @@ var DEFAULT_IGNORENEWCONTENT = 1;
 var oDisablePlugin;
 var oShowImages;
 var oIgnoreBackgroundImages;
+var oWaitForPageload;
 var oOpacity;
 var oToggleOnMouseover;
 var oRevealSpeed;
@@ -49,6 +51,7 @@ function save_options() {
   var disablePlugin = document.getElementById("disablePlugin");
   var showImages = document.getElementById("showImages");
   var ignoreBackgroundImages = document.getElementById("ignoreBackgroundImages");
+  var waitForPageload = document.getElementById("waitForPageload");
   var opacity = document.getElementById("opacity");
   var toggleOnMouseover = document.getElementById("toggleOnMouseover");
   var revealSpeed = document.getElementById("revealSpeed");
@@ -60,6 +63,7 @@ function save_options() {
   options["disablePlugin"] = oDisablePlugin = disablePlugin.checked ? 1 : 0;
   options["showImages"] = oShowImages = showImages.checked ? 1 : 0;
   options["ignoreBackgroundImages"] = oIgnoreBackgroundImages = ignoreBackgroundImages.checked ? 1 : 0;
+  options["waitForPageload"] = oWaitForPageload = waitForPageload.checked ? 1 : 0;
   options["opacity"] = oOpacity = opacity.value;
   options["toggleOnMouseover"] = oToggleOnMouseover = toggleOnMouseover.checked ? 1 : 0;
   options["revealSpeed"] = oRevealSpeed = revealSpeed.value.replace("seconds", "").replace(" ","") * 1000;
@@ -153,6 +157,7 @@ function restore_options() {
 	var disablePlugin = document.getElementById("disablePlugin");
 	var showImages = document.getElementById("showImages");
 	var ignoreBackgroundImages = document.getElementById("ignoreBackgroundImages");
+	var waitForPageload = document.getElementById("waitForPageload");
 	var opacity = document.getElementById("opacity");
 	var toggleOnMouseover = document.getElementById("toggleOnMouseover");
 	var revealSpeed = document.getElementById("revealSpeed");
@@ -177,6 +182,7 @@ function restore_options() {
 		options["disablePlugin"] = DEFAULT_DISABLEPLUGIN;
 		options["showImages"] = DEFAULT_SHOWIMAGES;
 		options["ignoreBackgroundImages"] = DEFAULT_IGNOREBACKGROUNDIMAGES;
+		options["waitForPageload"] = DEFAULT_WAITFORPAGELOAD;
 		options["opacity"] = DEFAULT_OPACITY;
 		options["toggleOnMouseover"] = DEFAULT_TOGGLEONMOUSEOVER;
 		options["revealSpeed"] = DEFAULT_REVEALSPEED;
@@ -196,6 +202,7 @@ function restore_options() {
 	oDisablePlugin = options["disablePlugin"];
 	oShowImages = options["showImages"];
 	oIgnoreBackgroundImages = options["ignoreBackgroundImages"];
+	oWaitForPageload = options["waitForPageload"];
 	oOpacity = options["opacity"];
 	oToggleOnMouseover = options["toggleOnMouseover"];
 	oRevealSpeed = options["revealSpeed"];
@@ -205,6 +212,7 @@ function restore_options() {
 	disablePlugin.checked = (parseInt(oDisablePlugin) == 1 ? true : false); 
 	showImages.checked = (parseInt(oShowImages) == 1 ? true : false); 
 	ignoreBackgroundImages.checked = (parseInt(oIgnoreBackgroundImages) == 1 ? true : false);
+	waitForPageload.checked = (parseInt(oWaitForPageload) == 1 ? true : false);
 	opacity.value = oOpacity;
 	toggleOnMouseover.checked =(parseInt(oToggleOnMouseover) == 1 ? true : false);
 	revealSpeed.value = oRevealSpeed;
@@ -329,6 +337,7 @@ document.querySelector('#save').addEventListener('click', save_options);
 document.getElementById("disablePlugin").onchange = save_options;
 document.getElementById("showImages").onchange = save_options;
 document.getElementById("ignoreBackgroundImages").onchange = save_options;
+document.getElementById("waitForPageload").onchange = save_options;
 document.getElementById("fineGrain").onchange = save_options;
 document.getElementById("toggleOnMouseover").onchange = function () {
 
