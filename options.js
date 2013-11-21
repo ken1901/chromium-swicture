@@ -1,6 +1,7 @@
 // Save this script as `options.js`
-var init = 0;
 
+var init = 0;
+var DEFAULT_DISABLEPLUGIN = 0;
 var DEFAULT_SHOWIMAGES = 1;
 var DEFAULT_IGNOREBACKGROUNDIMAGES = 1;
 var DEFAULT_OPACITY = 0.1;
@@ -9,6 +10,7 @@ var DEFAULT_REVEALSPEED = 1000;
 var DEFAULT_EXCEPTIONS = "https://*" + "\n" + "*.google.com/*" + "\n" + "*http://www.wikipedia.org/*" + "\n" + "*://amazon.com/*";
 var DEFAULT_IGNORENEWCONTENT = 1;
 
+var oDisablePlugin;
 var oShowImages;
 var oIgnoreBackgroundImages;
 var oOpacity;
@@ -44,6 +46,7 @@ function setOnMouseover()
 
 // Saves options to localStorage.
 function save_options() {
+  var disablePlugin = document.getElementById("disablePlugin");
   var showImages = document.getElementById("showImages");
   var ignoreBackgroundImages = document.getElementById("ignoreBackgroundImages");
   var opacity = document.getElementById("opacity");
@@ -54,6 +57,7 @@ function save_options() {
   var exceptions = document.getElementById("exceptions");
 
   options = {};
+  options["disablePlugin"] = oDisablePlugin = disablePlugin.checked ? 1 : 0;
   options["showImages"] = oShowImages = showImages.checked ? 1 : 0;
   options["ignoreBackgroundImages"] = oIgnoreBackgroundImages = ignoreBackgroundImages.checked ? 1 : 0;
   options["opacity"] = oOpacity = opacity.value;
@@ -71,11 +75,6 @@ function save_options() {
 	console.log("if");
 	tempOptions = {};
 	console.log(localStorage);
-	/*
-	var temp = options;
-	temp["showImages"] = 1;
-	tempOptions["https://*"] = temp;
-	*/
   }
   else
   {
@@ -84,7 +83,7 @@ function save_options() {
   
 	tempOptions[$("#optionsFor").val()] = options;
 	localStorage["options"] = JSON.stringify(tempOptions);
-	//console.log(localStorage);
+	console.log(localStorage);
   
   if(requireProtocol)
   {
@@ -151,6 +150,7 @@ function save_options() {
 function restore_options() {
 
 	var def = 0;
+	var disablePlugin = document.getElementById("disablePlugin");
 	var showImages = document.getElementById("showImages");
 	var ignoreBackgroundImages = document.getElementById("ignoreBackgroundImages");
 	var opacity = document.getElementById("opacity");
@@ -174,6 +174,7 @@ function restore_options() {
 	{
 		console.log("options for " + $("#optionsFor").val() + " undefined");
 		def = 1;
+		options["disablePlugin"] = DEFAULT_DISABLEPLUGIN;
 		options["showImages"] = DEFAULT_SHOWIMAGES;
 		options["ignoreBackgroundImages"] = DEFAULT_IGNOREBACKGROUNDIMAGES;
 		options["opacity"] = DEFAULT_OPACITY;
@@ -192,6 +193,7 @@ function restore_options() {
 		oExceptions = localStorage["exceptions"];
 
 	
+	oDisablePlugin = options["disablePlugin"];
 	oShowImages = options["showImages"];
 	oIgnoreBackgroundImages = options["ignoreBackgroundImages"];
 	oOpacity = options["opacity"];
@@ -200,6 +202,7 @@ function restore_options() {
 	oAlwaysHideOn = options["alwaysHideOn"];
 	oIgnoreNewContent = options["ignoreNewContent"];
 	
+	disablePlugin.checked = (parseInt(oDisablePlugin) == 1 ? true : false); 
 	showImages.checked = (parseInt(oShowImages) == 1 ? true : false); 
 	ignoreBackgroundImages.checked = (parseInt(oIgnoreBackgroundImages) == 1 ? true : false);
 	opacity.value = oOpacity;
@@ -323,6 +326,7 @@ function cleanup()
 document.addEventListener('DOMContentLoaded', restore_options);
 document.querySelector('#save').addEventListener('click', save_options);
 
+document.getElementById("disablePlugin").onchange = save_options;
 document.getElementById("showImages").onchange = save_options;
 document.getElementById("ignoreBackgroundImages").onchange = save_options;
 document.getElementById("fineGrain").onchange = save_options;

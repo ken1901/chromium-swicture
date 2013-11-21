@@ -1,5 +1,6 @@
 var init = 0;
 
+var disablePlugin = 0;
 var show = 1;
 var opacity = 0.1;
 var toggleOnMouseover = 1;
@@ -18,6 +19,9 @@ var walk_the_DOM = function walk(node, func) {
 
 function applyOnMouseover(node)
 {
+        if(disablePlugin) return;
+
+
 	if(toggleOnMouseover)
 	{
 		node.onmouseover = function(){
@@ -35,6 +39,8 @@ function applyOnMouseover(node)
 
 function applyToggle()
 {
+        if(disablePlugin) return;
+
 	$("img").each(function(i) {
 	
 		$(this).stop().fadeTo(1, show ? 1.0 : opacity);
@@ -84,6 +90,7 @@ function applyToggle()
 
 function toggle()
 {
+        if(disablePlugin) return;
 	show = !show;
 	applyToggle();
 }
@@ -99,6 +106,10 @@ function onLoad()
 		{
 			var options = response.data;
 console.log(options);
+                        disablePlugin = options["disablePlugin"] == 0 ? 0 : 1;
+
+                        if(disablePlugin) return;
+
 			show = options["showImages"] == 0 ? 0 : 1;
 			ignoreBackgroundImages = options["ignoreBackgroundImages"] == 0 ? 0 : 1;
 			opacity = options["opacity"] != "undefined" ? options["opacity"] : opacity;
