@@ -1,0 +1,132 @@
+<html>
+<head>
+	<title>Image Toggler Options</title>
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/dot-luv/jquery-ui.css" /> 
+
+</head>
+
+<body>
+
+<table>
+	<tr>
+		<td colspan = "4" style="text-align:center">
+			<h1>Image Blocker Options</h1>
+		</td>
+	</tr>
+	<tr>
+		<td style="vertical-align:top;">
+			<table>
+				<tr>
+					<td style="text-align:right; vertical-align:middle"><b>Options for</b></td>
+					<td style="text-align:center">
+							<select id="optionsFor" style="width:100%;">
+								<option id="optionsForDefaults" value="defaultOptions">Default Options</option>
+							</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td style=";text-align:right;">Shortcut Key</td>
+					<td style=";text-align:left;">Ctrl + I</td>
+				</tr>
+				
+				<tr>
+					<td style="text-align:right; vertical-align:top">Show images by default</td>
+					<td><input type="checkbox" id="showImages"/></td>
+				</tr>
+				
+				<tr>
+					<td style="text-align:right">Ignore new content after page has loaded</td>
+					<td><input type="checkbox" id="ignoreNewContent"/> &nbsp;(Recommended for performance)</td>
+				</tr>
+				
+				<tr>
+					<td style="text-align:right; vertical-align:top">Ignore background images</td>
+					<td><input type="checkbox" id="ignoreBackgroundImages"/> &nbsp;(Recommended to maintain the UI)</td>
+				</tr>
+				
+				<tr>
+					<td style="text-align:right">Remember each page (coming soon)</td>
+					<td style="text-align:left"><input type="checkbox" id="fineGrain"></input></td>
+				</tr>
+				
+				<tr>
+					<td style="text-align:right"><label for="opacity">Transparency for hidden images:</label></td>
+					<td style="text-align:center; padding-left:10px"><input type="text" id="opacity" style=";text-align:center;border:0; display:none"/>
+						<div id="slider-range-max"></div>
+					</td>
+					
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td id="tdOpacity" width="300px" height="300px" style="background-size:300px 300px; background-repeat:no-repeat;">
+						<a target="_blank" href="http://blog.africageographic.com/safari-blog/cultural/the-boy-with-the-sapphire-eyes/"><img src="img/defaultOpacity.png"/></a>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align:right">Reveal hidden images on mouseover</td>
+					<td><input type="checkbox" id="toggleOnMouseover"/></td>
+				</tr>
+				<tr id="revealSpeedContainer">
+					<td style="text-align:right; vertical-align:top"><label for="revealSpeed">Reveal speed</label></td>
+					<td style="text-align:center; padding-left:10px">
+						<div id="slider-reveal-speed"></div>
+						<input type="text" id="revealSpeed" style=";text-align:center;border:0; "/>
+					</td>		
+				</tr>
+				
+				<tr style="display:none">
+					<td style="text-align:right">Stop processing after (coming soon)</td>
+					<td><input type="text" id="imageCap" style=";text-align:center"/> images</td>
+				</tr>
+
+				<tr>
+					<td>&nbsp;</td>
+					<td></td>
+				</tr>
+				
+				
+			</table>
+		</td>
+		<td style="padding:10px">&nbsp;</td>
+		<td style="border-left:1px; border-color:grey;border-left-style:solid; border-width:1px; padding:10px">&nbsp;</td>
+		<td style="vertical-align:top">
+			<table>
+				<tr>
+
+					<td colspan="2" style="text-align:center"><h3>Fine-grain Image Blocking</h3></td>
+				</tr>
+				
+				<tr>
+					<td style="text-align:right">Always show images for</td>
+					<td><textarea id="alwaysDisplayOn" style="width:300px; height:100px"></textarea></td>
+				</tr>
+				
+				<tr>
+					<td style="text-align:right">Always hide images for</td>
+					<td><textarea id="alwaysHideOn"  style="width:300px; height:100px" ></textarea></td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+					<td><button style="display:none" id="save">Save</button></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="4" style="text-align:left"><h2><div id="status" style="color:green"></div></h2></td>
+	</tr>
+</table>
+		
+<br>
+
+</body>
+
+<script src="jquery.js"></script>
+<script src="jquery-ui/ui/jquery-ui.js"></script>
+<script src="options.js"></script>
+<script src="jquery-time-slider.js"></script>
+
+
+</html>

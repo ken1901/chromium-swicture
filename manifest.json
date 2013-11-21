@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+
+  "name": "Image Toggler",
+  "description": "Show/hide images with one click",
+  "version": "1.0",
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["background.js","jquery.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["onClick.js","jquery.js"]
+  },
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "tabs", "http://*/*", "https://*/*"
+  ],
+  "commands": {
+    "toggle-images": {
+      "suggested_key": {
+        "default": "Ctrl+I",
+        "mac": "Command+I"
+      },
+      "description": "Toggle images"
+    }
+  }
+}
