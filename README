@@ -1,0 +1,30 @@
+chromium-image-toggler
+======================
+
+Chrome extension to hide/show images on page load. 
+
+Let me know if you would like to work on this project!
+
+This extension allows you to toggle images on a page using a key combination (Ctrl+i). For example,
+if you're browsing at work but don't want prying eyes, or simply don't want images to be shown
+then you would hit Ctrl+i. This will hide the images. Hitting it again would show the images.
+
+Options:
+
+- Show/hide images by default
+    Allows you to set the default behavior for page loads
+- Ignore new content after page has loaded (Recommended for performance)
+    This is for pages like instagram.com that add content dynamically
+- Ignore background images	  (Recommended to maintain the UI)
+    This is for pages like instagram.com that contain background images.
+    They use CSS instead of "a" tags
+- Transparency for hidden images.
+    You may want to have images transparent instead of totally hidden.
+    This makes it easier to notice images on the page
+- Reveal hidden images on mouseover
+    Allows you to show hidden images when you put the mouse cursor over them
+Reveal speed
+    Allows you to adjust how quickly a hidden image is fully shown
+- Customized pages
+    Allows you to allow each web page to behave differently
+    You can change all of the options above for specific web pages, domains, etc
