@@ -8,7 +8,7 @@ var DEFAULT_WAITFORPAGELOAD = 1;
 var DEFAULT_OPACITY = 0.1;
 var DEFAULT_TOGGLEONMOUSEOVER = 1;
 var DEFAULT_REVEALSPEED = 1000;
-var DEFAULT_EXCEPTIONS = "https://*" + "\n" + "*.google.com/*" + "\n" + "*http://www.wikipedia.org/*" + "\n" + "*://amazon.com/*";
+var DEFAULT_EXCEPTIONS = "https://*";
 var DEFAULT_IGNORENEWCONTENT = 1;
 
 var oDisablePlugin;
