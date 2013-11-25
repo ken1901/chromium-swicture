@@ -3,6 +3,8 @@ chromium-image-toggler
 
 Chrome extension to hide/show images on page load. 
 
+Report bugs at https://github.com/martinkbrown/chromium-swicture/issues
+
 Let me know if you would like to work on this project!
 
 This extension allows you to toggle images on a page using a key combination (Ctrl+i). For example,
